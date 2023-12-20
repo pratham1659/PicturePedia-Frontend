@@ -1,4 +1,5 @@
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const BASE_URL = "https://api.themoviedb.org/3";
 const TMDB_TOKEN = import.meta.env.VITE_APP_TMDB_TOKEN;
@@ -13,8 +14,10 @@ export const fetchDataFromApi = async (url, params) => {
       headers,
       params,
     });
+    toast.success("Data fetched successfully!");
     return data;
   } catch (err) {
+    toast.error("Error fetching data. Please try again later.");
     console.log(err);
     return err;
   }
