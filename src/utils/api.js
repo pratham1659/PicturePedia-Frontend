@@ -14,7 +14,6 @@ export const fetchDataFromApi = async (url, params) => {
       headers,
       params,
     });
-    toast.success("Data fetched successfully!");
     return data;
   } catch (err) {
     toast.error("Error fetching data. Please try again later.");
