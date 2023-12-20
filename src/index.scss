@@ -18,10 +18,15 @@
   --pink: #08b4e3;
   --orange: #f89e00;
   --gradient: linear-gradient(
-    94deg,
-    rgba(248, 158, 0, 1) 0%,
-    rgba(8, 180, 227, 1) 67%
+    98.37deg,
+    rgb(var(--tmdbLightGreen)) 0.99%,
+    rgb(var(--tmdbLightBlue)) 100%
   );
+
+  //   background: #121fcf;
+  //   background: linear-gradient(to right, #121fcf 0%, #cf1512 100%);
+  //   -webkit-background-clip: text;
+  //   -webkit-text-fill-color: transparent;
 
   //Extras Colour Code
   --scrollerGrey: 219, 219, 219;
