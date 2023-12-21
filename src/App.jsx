@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { fetchDataFromApi } from "./utils/api";
 
@@ -12,6 +12,8 @@ import Details from "./pages/details/Details";
 import SearchResult from "./pages/searchResult/SearchResult";
 import Explore from "./pages/explore/Explore";
 import PageNotFound from "./pages/404/PageNotFound";
+
+import LoadingBar from "react-top-loading-bar";
 
 function App() {
   const dispatch = useDispatch();
@@ -55,15 +57,32 @@ function App() {
     dispatch(getGenres(allGenres));
   };
 
+  const [progress, setProgress] = useState(0);
+
   return (
     <BrowserRouter>
+      <LoadingBar
+        color="#08b4e3"
+        height={3}
+        progress={progress}
+        onLoaderFinished={() => setProgress(0)}
+      />
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/:mediaType/:id" element={<Details />} />
-        <Route path="/search/:query" element={<SearchResult />} />
-        <Route path="/explore/:mediaType" element={<Explore />} />
-        <Route path="*" element={<PageNotFound />} />
+        <Route path="/" element={<Home setProgress={setProgress} />} />
+        <Route
+          path="/:mediaType/:id"
+          element={<Details setProgress={setProgress} />}
+        />
+        <Route
+          path="/search/:query"
+          element={<SearchResult setProgress={setProgress} />}
+        />
+        <Route
+          path="/explore/:mediaType"
+          element={<Explore setProgress={setProgress} />}
+        />
+        <Route path="*" element={<PageNotFound setProgress={setProgress} />} />
       </Routes>
       <Footer />
     </BrowserRouter>

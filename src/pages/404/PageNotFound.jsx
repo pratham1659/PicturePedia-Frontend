@@ -1,10 +1,18 @@
-import React from "react";
+import { useEffect } from "react";
+import PropTypes from "prop-types";
 
 import "./style.scss";
 
 import ContentWrapper from "../../components/contentWrapper/ContentWrapper";
 
-const PageNotFound = () => {
+const PageNotFound = ({ setProgress }) => {
+  useEffect(() => {
+    setProgress(30);
+    const loadingTimeout = setTimeout(() => {
+      setProgress(100);
+    }, 1000);
+    return () => clearTimeout(loadingTimeout);
+  }, [setProgress]);
   return (
     <div className="pageNotFound">
       <ContentWrapper>
@@ -15,4 +23,7 @@ const PageNotFound = () => {
   );
 };
 
+PageNotFound.propTypes = {
+  setProgress: PropTypes.func.isRequired,
+};
 export default PageNotFound;
