@@ -39,7 +39,7 @@ const HeroBanner = () => {
       <div className="opacity-layer"></div>
       <ContentWrapper>
         <div className="heroBannerContent">
-          <span className="title">Welcome to PicturePedia</span>
+          <span className="title">Welcome</span>
           <span className="subTitle">
             Here You can find your Favourites Millions of movies, TV shows and
             people to discover. Explore now.
